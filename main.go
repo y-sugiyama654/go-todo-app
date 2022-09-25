@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go-todo-app/config"
+	"log"
 )
 
 func main() {
@@ -10,4 +11,7 @@ func main() {
 	fmt.Println(config.Config.SQLDriver)
 	fmt.Println(config.Config.DbName)
 	fmt.Println(config.Config.LogFile)
+
+	// ログ出力(動作確認用)
+	log.Println("test")
 }

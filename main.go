@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"go-todo-app/app/models"
 	"go-todo-app/config"
 	"log"
 )
@@ -14,4 +15,6 @@ func main() {
 
 	// ログ出力(動作確認用)
 	log.Println("test")
+
+	fmt.Println(models.Db)
 }

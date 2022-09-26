@@ -2,19 +2,26 @@ package main
 
 import (
 	"fmt"
-	"go-todo-app/app/models"
-	"go-todo-app/config"
-	"log"
+	"main/app/models"
 )
 
 func main() {
-	fmt.Println(config.Config.Port)
-	fmt.Println(config.Config.SQLDriver)
-	fmt.Println(config.Config.DbName)
-	fmt.Println(config.Config.LogFile)
+	/*
+		fmt.Println(config.Config.Port)
+		fmt.Println(config.Config.SQLDriver)
+		fmt.Println(config.Config.DbName)
+		fmt.Println(config.Config.LogFile)
 
-	// ログ出力(動作確認用)
-	log.Println("test")
+		// ログ出力(動作確認用)
+		log.Println("test")
 
-	fmt.Println(models.Db)
+		fmt.Println(models.Db)
+	*/
+
+	u := &models.User{}
+	u.Name = "Yuta"
+	u.Email = "yuta@gmail.com"
+	u.PassWord = "Test2test"
+	fmt.Println(u)
+	u.CreateUser()
 }

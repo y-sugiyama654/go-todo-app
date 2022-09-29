@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+	fmt.Println(models.Db)
 	/*
 		fmt.Println(config.Config.Port)
 		fmt.Println(config.Config.SQLDriver)

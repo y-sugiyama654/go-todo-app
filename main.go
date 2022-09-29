@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Println(models.Db)
+	// fmt.Println(models.Db)
 	/*
 		fmt.Println(config.Config.Port)
 		fmt.Println(config.Config.SQLDriver)
@@ -19,16 +19,18 @@ func main() {
 		fmt.Println(models.Db)
 	*/
 
-	u := &models.User{}
-	u.Name = "Yuta"
-	u.Email = "yuta@gmail.com"
-	u.PassWord = "Test2test"
-	// userの作成
-	u.CreateUser()
+	// u := &models.User{}
+	// u.Name = "Yuta"
+	// u.Email = "yuta@gmail.com"
+	// u.PassWord = "Test2test"
+	// // userの作成
+	// u.CreateUser()
 
-	user, _ := models.GetUser(2)
-	// totoの作成
-	user.CreateTodo("First Todo")
+	// user, _ := models.GetUser(2)
+	// // totoの作成
+	// user.CreateTodo("First Todo")
+	// todo, _ := models.GetTodo(1)
+	// fmt.Println(todo)
 
 	// fmt.Println(u)
 
@@ -41,4 +43,7 @@ func main() {
 	// u.DeleteUser()
 	// u, _ = models.GetUser(1)
 	// fmt.Println(u)
+
+	todo, _ := models.GetTodo(1)
+	fmt.Println(todo)
 }

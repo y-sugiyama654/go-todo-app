@@ -47,9 +47,13 @@ func main() {
 	// todo, _ := models.GetTodo(1)
 	// fmt.Println(todo)
 
-	user, _ := models.GetUser(2)
-	todos, _ := user.GetTodosByUser()
-	for _, v := range todos {
-		fmt.Println(v)
-	}
+	// user, _ := models.GetUser(2)
+	// todos, _ := user.GetTodosByUser()
+	// for _, v := range todos {
+	// 	fmt.Println(v)
+	// }
+
+	t, _ := models.GetTodo(3)
+	fmt.Println(t)
+	t.DeleteTodo()
 }

@@ -53,7 +53,11 @@ func main() {
 	// 	fmt.Println(v)
 	// }
 
-	t, _ := models.GetTodo(3)
+	t, _ := models.GetTodo(2)
+	t.Content = "Second Todo"
+	t.UpdateTodo()
+	t, _ = models.GetTodo(2)
 	fmt.Println(t)
-	t.DeleteTodo()
+	// fmt.Println(t)
+	// t.DeleteTodo()
 }

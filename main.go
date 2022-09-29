@@ -19,25 +19,26 @@ func main() {
 		fmt.Println(models.Db)
 	*/
 
-	/*
-		u := &models.User{}
-		u.Name = "Yuta"
-		u.Email = "yuta@gmail.com"
-		u.PassWord = "Test2test"
-		fmt.Println(u)
-		u.CreateUser()
-	*/
+	u := &models.User{}
+	u.Name = "Yuta"
+	u.Email = "yuta@gmail.com"
+	u.PassWord = "Test2test"
+	// userの作成
+	u.CreateUser()
 
-	u, _ := models.GetUser(1)
-	fmt.Println(u)
+	user, _ := models.GetUser(2)
+	// totoの作成
+	user.CreateTodo("First Todo")
 
-	u.Name = "Test2"
-	u.Email = "test2@example.com"
-	u.UpdateUser()
-	u, _ = models.GetUser(1)
-	fmt.Println(u)
+	// fmt.Println(u)
 
-	u.DeleteUser()
-	u, _ = models.GetUser(1)
-	fmt.Println(u)
+	// u.Name = "Test2"
+	// u.Email = "test2@example.com"
+	// u.UpdateUser()
+	// u, _ = models.GetUser(1)
+	// fmt.Println(u)
+
+	// u.DeleteUser()
+	// u, _ = models.GetUser(1)
+	// fmt.Println(u)
 }

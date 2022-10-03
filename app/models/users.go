@@ -11,6 +11,7 @@ type User struct {
 	Name      string
 	Email     string
 	PassWord  string
+	Todos     []Todo
 	CreatedAt time.Time
 }
 
@@ -141,4 +142,16 @@ func (ses *Session) DeleteSessionByUUID() (err error) {
 		log.Fatalln(err)
 	}
 	return err
+}
+
+func (ses *Session) GetUserBySession() (user User, err error) {
+	user = User{}
+	cmd := `select id, uuid, name, email, created_at FROM users where id = ?`
+	err = Db.QueryRow(cmd, ses.UserID).Scan(
+		&user.ID,
+		&user.UUID,
+		&user.Name,
+		&user.Email,
+		&user.CreatedAt)
+	return user, err
 }

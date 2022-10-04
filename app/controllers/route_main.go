@@ -98,3 +98,23 @@ func todoSave(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/todos", 302)
 	}
 }
+
+func todoDelete(w http.ResponseWriter, r *http.Request, id int) {
+	ses, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, nil, "/login", 302)
+	} else {
+		_, err := ses.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		t, err := models.GetTodo(id)
+		if err != nil {
+			log.Println(err)
+		}
+		if err := t.DeleteTodo(); err != nil {
+			log.Println(err)
+		}
+		http.Redirect(w, r, "/todos", 302)
+	}
+}

@@ -24,13 +24,13 @@ func session(w http.ResponseWriter, r *http.Request) (ses models.Session, err er
 	if err == nil {
 		ses = models.Session{UUID: cookie.Value}
 		if ok, _ := ses.CheckSession(); !ok {
-			err = fmt.Errorf("Invalid session")
+			err = fmt.Errorf("invalid session")
 		}
 	}
 	return ses, err
 }
 
-var validPath = regexp.MustCompile("^/todos/(edit|update)/([0-9]+)$")
+var validPath = regexp.MustCompile("^/todos/(edit|update|delete)/([0-9]+)$")
 
 func parseURL(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
 	// アクセスしてきたURLからidを取得
@@ -61,6 +61,7 @@ func StartMainServer() error {
 	http.HandleFunc("/todos", index)
 	http.HandleFunc("/todos/new", todoNew)
 	http.HandleFunc("/todos/save", todoSave)
+	http.HandleFunc("/todos/delete", parseURL(todoDelete))
 	http.HandleFunc("/todos/edit/", parseURL(todoEdit))
 	http.HandleFunc("/todos/update/", parseURL(todoUpdate))
 	return http.ListenAndServe(":"+config.Config.Port, nil)

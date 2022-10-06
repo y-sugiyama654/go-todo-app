@@ -118,3 +118,39 @@ func todoDelete(w http.ResponseWriter, r *http.Request, id int) {
 		http.Redirect(w, r, "/todos", 302)
 	}
 }
+
+func myPage(w http.ResponseWriter, r *http.Request) {
+	ses, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/", 302)
+	} else {
+		user, err := ses.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		generatedHTML(w, user, "layout", "private_navbar", "my_page")
+	}
+}
+
+func myPageUpdate(w http.ResponseWriter, r *http.Request, id int) {
+	ses, err := session(w, r)
+	if err != nil {
+		http.Redirect(w, r, "/login", 302)
+	} else {
+		err := r.ParseForm()
+		if err != nil {
+			log.Println(err)
+		}
+		user, err := ses.GetUserBySession()
+		if err != nil {
+			log.Println(err)
+		}
+		name := r.PostFormValue("name")
+		email := r.PostFormValue("email")
+		u := &models.User{ID: user.ID, Name: name, Email: email}
+		if err := u.UpdateUser(); err != nil {
+			log.Println(err)
+		}
+		http.Redirect(w, r, "/todos", 302)
+	}
+}

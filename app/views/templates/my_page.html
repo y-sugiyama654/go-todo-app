@@ -1,0 +1,12 @@
+{{define "content"}}
+<h1>MyPage Editor</h1>
+<form role="form" action="/me/update/{{.ID}}" method="post">
+    <div class="form-group">
+      <input class="form-control" name="name" id="name" value={{.Name}} />
+      <br/>
+      <input class="form-control" name="email" id="email" value={{.Email}} />
+      <br/>
+      <button class="btn btn-lg btn-primary pull-right" type="submit">更新</button>
+    </div>
+  </form>
+{{end}}
